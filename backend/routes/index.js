@@ -6,12 +6,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/auth',(req,res) => {
-
-});
-
-router.get('/auth',(req,res) => {
-	
-});
-
 module.exports = router;
