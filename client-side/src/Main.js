@@ -15,8 +15,8 @@ class Main extends Component {
         <Route exact path='/home' component={EventsList}/>
         {/* both /roster and /roster/:number begin with /roster */}
         <Route path='/*/join' component={JoinGroup}/>
-        <Route path='/' component={SplashScreen}/>
         <Route path='/DashBoard' component={DashBoardScreen}/>
+        <Route path='/' component={SplashScreen}/>
       </Switch>
     );
   }

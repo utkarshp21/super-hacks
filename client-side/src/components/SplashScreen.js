@@ -14,7 +14,7 @@ class SplashScreen extends React.Component {
   render() {
     return (
       <div className="">
-         <h1>helllo</h1>
+         <h1>spla</h1>
       </div>
     );
   }

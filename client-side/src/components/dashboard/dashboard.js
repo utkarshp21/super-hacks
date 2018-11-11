@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import * as eventsActions from '../../actions/';
 import PropTypes from 'prop-types';
 import React from 'react';
-// import '../App.css';
+import './dashboard.css';
 
 class DashBoardScreen extends React.Component {
   
@@ -12,8 +12,18 @@ class DashBoardScreen extends React.Component {
   }
   render() {
     return (
-      <div className="">
-         <h1>helllo</h1>
+      <div className="container">
+          <div>
+              <div class = "col-md-4 songList" >
+                1 of 2
+              </div>
+              <div class="col-md-4">
+                2 of 2
+              </div>
+              <div class="col-md-4">
+                2 of 2
+              </div>
+          </div>
       </div>
     );
   }
