@@ -64,7 +64,7 @@ class DashBoardScreen extends React.Component {
 
         // Playback status updates
         player.addListener('player_state_changed', state => {
-          console.log(state);
+          // console.log(state);
         });
 
         // Ready
@@ -120,7 +120,7 @@ class DashBoardScreen extends React.Component {
         clearInterval(this.playerCheckInterval);
 
       };
-      
+
     }
   }
 
@@ -142,27 +142,33 @@ class DashBoardScreen extends React.Component {
                 <h2>Up Next</h2>
                 <SongList songs={this.props}/>
               </div>
-              <div className = "col-md-4" >
-                <div className="now_playing">
+              <div className = "col-md-5" >
+                <div className="now_playing" style={{textAlign: 'center'}}>
                   <h2>Now Playing</h2>
                   <img src={this.props.current_song["album"]["images"][1]["url"]}></img>
                   <h3>{this.props.current_song.name}</h3>
                   <div className="row">
-                    <div className="col-md-4 play_button">
+                    <div className="col-md-4 play_button" onClick={()=>window.player.previousTrack()}>
                       <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
                     </div>
                     <div className="col-md-4 play_button">
-                      <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+                      <span className="glyphicon glyphicon-play" id="playbackButton" aria-hidden="true" onClick={()=>{
+                        window.player.togglePlay();
+                        var element = document.getElementById("playbackButton");
+                        element.classList.toggle("glyphicon-play");
+                        element.classList.toggle("glyphicon-pause");
+                        }
+                      }></span>
                     </div>
                     <div className="col-md-4 play_button">
-                      <span className="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                      <span className="glyphicon glyphicon-forward" aria-hidden="true" onClick={()=>window.player.nextTrack()}></span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className = "col-md-4" >
+              <div className = "col-md-3" >
                   <div className="dropdown">
-                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Mood
+                    <button className="btn btn-primary dropdown-toggle moodbutton" type="button" data-toggle="dropdown">Select Mood
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
                       <li><a href="#">Mood 1</a></li>

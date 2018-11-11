@@ -34,8 +34,8 @@
 }
 
 .dropdown {
-    margin: 10px 250px;
-    right: 20px;
+    /*margin: 10px 250px;*/
+    /*right: 20px;*/
 }
 
 .artistName {
@@ -43,7 +43,8 @@
 }
 
 .slider-container {
-    margin-left: 50px;
+    margin-top: 10px;
+    width: 100%;
 }
 
 
@@ -51,3 +52,9 @@
     background-color: #404040
 }
 
+.moodbutton {
+    background-color: #FF6753!important;
+    border-radius: 20px!important;
+    border-color: #FF6753!important;
+    width: 100%;
+}

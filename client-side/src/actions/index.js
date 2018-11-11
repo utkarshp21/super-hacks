@@ -105,10 +105,8 @@ export function changeCurrentSong(song) {
                 playerInstance: window.player,
                 spotify_uri: song.uri,
             })
-        })
-                
+        });
         dispatch(updateCurrentSong(song))
-
     }
-
 }
+
