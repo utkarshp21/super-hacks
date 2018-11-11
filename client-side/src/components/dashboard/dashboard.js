@@ -199,40 +199,44 @@ class DashBoardScreen extends React.Component {
                     </ul>
                   </div>
                   <ul className="list-group slider-container">
-                    <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Acousticness</label>
+                    <li className="list-group-item rangeObj"> 
+                    <div>
+                    <label for="acousticness">Acousticness</label>
                     <input type="range" className="custom-range" id="acousticness"/>
-                  </div></li>
-                    < li className = "list-group-item rangeObj" > < div >
-                    <label for="customRange1">Danceability</label>
+                    </div>
+                  </li>
+                    <li className="list-group-item rangeObj"> 
+                    <div>
+                    <label for="danceability">Danceability</label>
                     <input type="range" className="custom-range" id="danceability"/>
-                  </div></li>
+                  </div>
+                  </li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Energy</label>
+                    <label for="energy">Energy</label>
                     <input type="range" className="custom-range" id="energy"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Liveness</label>
+                    <label for="liveness">Liveness</label>
                     <input type="range" className="custom-range" id="liveness"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Loudness</label>
+                    <label for="loudness">Loudness</label>
                     <input type="range" className="custom-range" id="loudness"/>
                   </div></li>
                   <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Popularity</label>
+                    <label for="popularity">Popularity</label>
                     <input type="range" className="custom-range" id="popularity"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Tempo</label>
+                    <label for="tempo">Tempo</label>
                     <input type="range" className="custom-range" id="tempo"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Valence</label>
+                    <label for="valence">Valence</label>
                     <input type="range" className="custom-range" id="valence"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Group</label>
+                    <label for="group">Group</label>
                     <input type="range" className="custom-range" id="group"/>
                   </div></li>
                   </ul>

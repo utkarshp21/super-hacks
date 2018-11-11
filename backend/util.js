@@ -1,8 +1,9 @@
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync')
 const dash = require('lodash');
-const adapter = new FileSync('db.json')
-const db = low(adapter)
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+const request = require('request-promise');
 
 // Set some defaults (required if your JSON file is empty)
 db.defaults({ 
@@ -60,14 +61,18 @@ const getSimilar = (user) => {
 }
 
 const addGroupUser = ({accessToken,refreshToken,songs,group}) => {
-	return db.get('users')
-	.push({
-		accessToken,
-		refreshToken,
-		songs,
-		group
-	})
-	.write();
+	return new Promise((resolve,reject) => {
+		db.get('users')
+			.push({
+				accessToken,
+				refreshToken,
+				songs,
+				group
+			})
+			.write();
+			resolve('added');
+	});
+	
 }
 
 const addHost = ({accessToken, refreshToken, group}) => {
@@ -80,7 +85,11 @@ const addHost = ({accessToken, refreshToken, group}) => {
 }
 
 const getHostAccessToken = () => {
-	return db.get('host.accessToken').value()
+	return db.get('host.accessToken').value();
+}
+
+const setHostAccessToken = (accessToken) => {
+	return db.set('host.accessToken',accessToken).write();
 }
 
 
@@ -125,6 +134,10 @@ const getGroupSongs = (group) => {
 		.value();
 		resolve(val);	
 	}) 
+}
+
+const getRefreshToken = () => {
+	return db.get('host.refreshToken').value();
 }
 
 
@@ -181,12 +194,14 @@ const getSeed = (group) => {
 module.exports = {
 	randomString: generateRandomString,
 	getHostAccessToken,
+	setHostAccessToken,
 	buildData,
 	addSongs,
 	getSongs,
 	addGroupUser,
 	addHost,
 	getSongsForUser,
-	getSeed
+	getSeed,
+	getRefreshToken
 }
 

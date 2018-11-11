@@ -11,7 +11,9 @@ const {
 	addGroupUser,
 	addHost,
 	getSongsForUser,
-	getSeed
+	getSeed,
+	getRefreshToken,
+	setHostAccessToken
 } = util;
 
 
@@ -47,14 +49,15 @@ router.get('/callback', (req, res) => {
 
   let code = req.query.code || null;
   let state = req.query.state || null;
-  let host = req.query.host || false;
+  let host = req.query.host;
 
-
+	console.log(host);
     let authOptions = {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
-        redirect_uri: keys.spotify.redirectUri,
+        // redirect_uri: keys.spotify.redirectUri,
+        redirect_uri: 'http://15b58e96.ngrok.io/callback',
         grant_type: 'authorization_code'
       },
       headers: {
@@ -83,6 +86,7 @@ router.get('/callback', (req, res) => {
 	  	addGroupUser({accessToken:access_token, refreshToken:refresh_token, group:state, songs})
 	  	.then((data) => {
 	  		console.log(`Added user to the group ${state}: `,data);
+	  		res.send(`Successfully added to the group. Have fun!`);
 	  	})
 	  	.catch((err) => {
 	  		console.log('Error in setting user: ', err);
@@ -112,7 +116,7 @@ router.get('/callback', (req, res) => {
 router.get('/refresh_token', (req, res) => {
 
   // requesting access token from refresh token
-  let refresh_token = req.query.refresh_token;
+  let refresh_token = getRefreshToken();
   
 	  let authOptions = {
 	    url: 'https://accounts.spotify.com/api/token',
@@ -127,6 +131,7 @@ router.get('/refresh_token', (req, res) => {
 	  request.post(authOptions)
 	  .then((data) => {
 	    let access_token = data.access_token;
+		setHostAccessToken(access_token);
 	    res.json({
 	      access_token
 	    })
@@ -269,7 +274,7 @@ router.post('/recommendation',async (req,res) => {
 		res.json({data});
 	})
 	.catch((err) => {
-		console.log('Recommendation error: ', err.toJSON());
+		console.log('Recommendation error: ', err);
 	})
 });
 

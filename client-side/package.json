@@ -9,7 +9,6 @@
     "qrcode.react": "^0.8.0",
     "querystring": "^0.2.0",
     "react": "^16.4.2",
-    "react-bootstrap": "^0.32.3",
     "react-dom": "^16.4.2",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
@@ -24,7 +23,7 @@
     "node": "6.9.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
