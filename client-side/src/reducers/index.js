@@ -2,6 +2,7 @@ import initialState from './initialState';
 import {
     RECIEVE_ALL_EVENTS,
     RECIEVE_ACCESS_TOKEN,
+    CHANGE_CURRENT_SONG,
 } from '../actions/';
 
 
@@ -19,6 +20,12 @@ const reducer = (state = initialState, action) => {
     case RECIEVE_ACCESS_TOKEN:
       newState = Object.assign({}, state, {
         token: action.token
+      })
+      return newState;
+    
+    case CHANGE_CURRENT_SONG:
+      newState = Object.assign({}, state, {
+        current_song: action.song
       })
       return newState;
       
