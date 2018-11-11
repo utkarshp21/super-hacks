@@ -4,7 +4,7 @@ import * as eventsActions from '../../actions/';
 import PropTypes from 'prop-types';
 import React from 'react';
 import './dashboard.css';
-
+var QRCode = require('qrcode.react');
 
 function SongList(props) {
   const songs = props.songs.songs;
@@ -149,8 +149,10 @@ class DashBoardScreen extends React.Component {
         constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
       case 'EDM':
         constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
-      case 'Death Metal Esque':
-        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'Randomize':
+        for (var i = 0; i < constraints.length; i++) {
+          constraints[i] = Math.random();
+        }
     }
     var x = document.getElementsByClassName("moodRange");
 
@@ -221,7 +223,7 @@ class DashBoardScreen extends React.Component {
                       <li><a onClick={()=>this.updateConstraintsFor('WorkOut')}>WorkOut</a></li>
                       <li><a onClick={()=>this.updateConstraintsFor('Focus')}>Focus</a></li>
                       <li><a onClick={()=>this.updateConstraintsFor('EDM')}>EDM</a></li>
-                      <li><a onClick={()=>this.updateConstraintsFor('Death Metal Esque')}>Death Metal Esque</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('Randomize')}>Randomize</a></li>
                     </ul>
                   </div>
                   <ul className="list-group slider-container">
@@ -264,7 +266,7 @@ class DashBoardScreen extends React.Component {
                   </ul>
                   <button onClick={()=>this.props.eventsActions.fetchSongs()} className={'refreshButton'}>Refresh Recomendations</button>
 
-                  {/* </div> */}
+                  <QRCode value={""}/>
               </div>
           </div>
       </div>
