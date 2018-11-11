@@ -25,9 +25,9 @@ function SongList(props) {
 }
 
 class DashBoardScreen extends React.Component {
-  
-  componentWillMount() {  
-    
+
+  componentWillMount() {
+
   }
   render() {
     return (
@@ -45,13 +45,13 @@ class DashBoardScreen extends React.Component {
                   <div className="row">
                     <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
-                    </div> 
+                    </div>
                     <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
-                    </div> 
+                    </div>
                     <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-forward" aria-hidden="true"></span>
-                    </div>  
+                    </div>
                   </div>
                 </div>
               </div>
@@ -67,43 +67,43 @@ class DashBoardScreen extends React.Component {
                   </div>
                   <ul className="list-group">
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Acousticness</label>
+                    <input type="range" className="custom-range" id="Acousticness"/>
                   </div></li>
                     < li className = "list-group-item rangeObj" > < div >
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Danceability</label>
+                    <input type="range" className="custom-range" id="Danceability"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Energy</label>
+                    <input type="range" className="custom-range" id="Energy"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Liveness</label>
+                    <input type="range" className="custom-range" id="Liveness"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Loudness</label>
+                    <input type="range" className="custom-range" id="Loudness"/>
                   </div></li>
                   <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Popularity</label>
+                    <input type="range" className="custom-range" id="Popularity"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Tempo</label>
+                    <input type="range" className="custom-range" id="Tempo"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Valence</label>
+                    <input type="range" className="custom-range" id="Valence"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
-                    <label for="customRange1">Example range</label>
-                    <input type="range" className="custom-range" id="customRange1"/>
+                    <label for="customRange1">Group</label>
+                    <input type="range" className="custom-range" id="Group"/>
                   </div></li>
                   </ul>
-                  
+
                   {/* </div> */}
               </div>
           </div>
