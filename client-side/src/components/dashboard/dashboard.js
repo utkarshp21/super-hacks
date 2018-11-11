@@ -114,12 +114,15 @@ class DashBoardScreen extends React.Component {
 
 DashBoardScreen.propTypes = {
   eventsActions: PropTypes.object,
+  current_song: PropTypes.object,
+  songs:PropTypes.object,
 };
 
 function mapStateToProps(state) {
   return {
     songs: state.songs,
-    token: state.token
+    token: state.token,
+    current_song: current_song
   };
 }
 
