@@ -28,8 +28,7 @@ function SongList(props) {
 class DashBoardScreen extends React.Component {
 
   checkForPlayer() {
-    debugger;
-    const token = 'BQCNtZmcPEgrmziVdPCG1vil4MIV9CYigBTnlhZbKudUDjjzemV5xqzNOBNsnQsoTwy3NwmsU6EHCx9lnDPlrzODO0gxF4oT3EeF9vrYQZm7EDIKik7APtCEBxIJT_eXmk1vH-MRzfeSaIdfgNCkNUZ_y1G1A1GAMSLf7xw2A_9nlOexnAlfo_xjgfE';
+    const token = 'BQASER73xuj6E0AOE7UxnNjvjfe9oxTE2umGFLPdk1TagSGMCWW0nxVx9eG98fPDgwkkdSMi35dipqKtVQy6LblLwvc21Vz2gbzh3ufyaerq-S0flL9cgFsQShwgCP1ujtaOOLVKOWoL60e1L3QrQNxXe3av8bMPGrHZ_dMhK_xcsk0lVFUL2MdTm_Y';
 
     if (window.Spotify !== null && window.Spotify !== undefined) {
       if (window.Spotify.Player !== null && window.Spotify.Player !== undefined) {
@@ -130,36 +129,9 @@ class DashBoardScreen extends React.Component {
   }
 
   componentWillMount() {
+     this.props.eventsActions.fetchSongs()
      this.props.eventsActions.getSpotifyDetails();
-     
      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
-
-    //  fetch('http://15b58e96.ngrok.io/recommendation', {
-    //      method: 'POST',
-    //      headers: {
-    //        'Accept': 'application/json',
-    //        'Content-Type': 'application/json',
-    //      },
-    //      body: JSON.stringify({
-    //        acousticness: document.getElementById("acousticness").value / 100,
-    //        danceability: document.getElementById("danceability").value / 100,
-    //        energy: document.getElementById("energy").value / 100,
-    //        liveness: document.getElementById("liveness").value / 100,
-    //        loudness: document.getElementById("loudness").value / 100,
-    //        popularity: document.getElementById("popularity").value,
-    //        tempo: document.getElementById("tempo").value / 100,
-    //        valence: document.getElementById("valence").value / 100,
-    //        group: document.getElementById("group").value / 100,
-    //      })
-    //    }).then(function (response) {
-    //      // var res = response.json();
-    //      // debugger;
-    //      return response.json();
-    //    })
-    //    .then((result) => {
-    //      console.log(result);
-    //    })
-     
   }
 
   render() {
