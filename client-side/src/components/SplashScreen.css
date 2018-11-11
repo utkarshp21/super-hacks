@@ -1,0 +1,30 @@
+.splashBackground {
+	background-color: #FF6753;
+	height: 100%;
+}
+
+.jumbo {
+	height: 100%;
+}
+
+.name {
+	margin: 0 auto;
+	width: 50%;
+}
+
+.name > h1 {
+	width: 50%;
+	margin: 0 auto;
+	color: #ffffff;
+}
+
+.profileImage {
+	margin: 0 auto;
+}
+
+.profileImage > img {
+	vertical-align: middle;
+	height: 300px;
+	width: 300px;
+	border-radius: 150px;
+}

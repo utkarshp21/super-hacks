@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import * as eventsActions from '../actions/';
 import PropTypes from 'prop-types';
 import React from 'react';
-// import '../App.css';
+import './SplashScreen.css';
 
 class SplashScreen extends React.Component {
   
@@ -13,8 +13,16 @@ class SplashScreen extends React.Component {
 
   render() {
     return (
-      <div className="">
-         <h1>spla</h1>
+      <div className="container-fluid splashBackground">
+        <div className="jumbotron-fluid jumbo">
+          <div className="profileImage">
+            <img src="https://www.crackiim.com/wp-content/uploads/2017/12/dummy_user-male.png" alt=""/>
+          </div>
+          <div className="name">
+            <h1>Welcome, Abhinav</h1>
+          </div>
+        </div>
+         
       </div>
     );
   }
