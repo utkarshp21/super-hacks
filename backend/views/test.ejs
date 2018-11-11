@@ -2,7 +2,7 @@
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
 	window.onSpotifyWebPlaybackSDKReady = () => {
-	  const token = 'BQAZ3uR1jNg9dijMt236wEwT9n35FyKTMJgWLlQ5QoXGwXwGmA5BD6WbPJgw9aHiC001vW8bhnqOTzGtsQxCePvCJ0c8erFdq-nhSQsa7gMAxAUZD3yQ1O892vzpkPJsdeS3UYtcjnV-WdR7cWhXqk1I6-58HjHOoBw46gsBCSth-pfVQ4uduwjL_5o';
+	  const token = 'BQCNtZmcPEgrmziVdPCG1vil4MIV9CYigBTnlhZbKudUDjjzemV5xqzNOBNsnQsoTwy3NwmsU6EHCx9lnDPlrzODO0gxF4oT3EeF9vrYQZm7EDIKik7APtCEBxIJT_eXmk1vH-MRzfeSaIdfgNCkNUZ_y1G1A1GAMSLf7xw2A_9nlOexnAlfo_xjgfE';
 	  const player = new Spotify.Player({
 	    name: 'Web Playback SDK Quick Start Player',
 	    getOAuthToken: cb => { cb(token); }
@@ -19,6 +19,9 @@
 
 	  // Ready
 	  player.addListener('ready', ({ device_id }) => {
+		
+
+
 	    console.log('Ready with Device ID', device_id);
 
 	    const play = ({
@@ -51,6 +54,9 @@
 	      playerInstance: player,
 	      spotify_uri: 'spotify:track:2wVCje7MBTBYqnNgvUGgZA',
 	    });
+
+	    window.myPlayer = player;
+	    window.play = play;
 	  });
 
 	  // Not Ready
@@ -60,14 +66,37 @@
 
 	  // Connect to the player!
 	  player.connect();
-
-	  
-	  	
-	  	
 	  
 	};
 
+	function test(){
+		console.log('Inside test');
+		window.myPlayer.pause()
+		.then(() => {
+			const uris = [
+			"spotify:track:26NP9TlHzftGbMQORpuLe4",
+			"spotify:track:6trvIBKmx64nkKs2KrWgx4",
+			"spotify:track:67YZtCviE4sEHmgRg5p5q8",
+			"spotify:track:67HRSCGK3ZQIxb3Spr1cHQ",
+			"spotify:track:1poYgV2T1E488kAgofhHZM",
+			"spotify:track:5hFSugZQs0ZbzOS4fx68wY",
+			"spotify:track:5qbhBDzV7r3RjT4ASzc49L",
+			"spotify:track:3aIaAYeBKIjaG9Q05VdT5U",
+			"spotify:track:3pxRbJhGBBNjQGYrECfUT1",
+			"spotify:track:2BUoLEEJvZfu0FhaJtYv0N",
+			"spotify:track:127qrKbnyZCYnn158P80op",
+			"spotify:track:0rnMsaM2G35eNbR01THeqY"
+			];
 
+			const idx = Math.floor(Math.random()*(uris.length-1));
+			console.log('Trying to play: ',uris[idx]);
+
+			window.play({
+				playerInstance: window.myPlayer,
+				spotify_uri: uris[idx]
+			})
+		});
+	}
 </script>
 	<body>
 		<button onclick="test()">Play</button>
