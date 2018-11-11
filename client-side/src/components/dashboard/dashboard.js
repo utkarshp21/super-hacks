@@ -28,7 +28,7 @@ function SongList(props) {
 class DashBoardScreen extends React.Component {
 
   checkForPlayer() {
-    const token = 'BQASER73xuj6E0AOE7UxnNjvjfe9oxTE2umGFLPdk1TagSGMCWW0nxVx9eG98fPDgwkkdSMi35dipqKtVQy6LblLwvc21Vz2gbzh3ufyaerq-S0flL9cgFsQShwgCP1ujtaOOLVKOWoL60e1L3QrQNxXe3av8bMPGrHZ_dMhK_xcsk0lVFUL2MdTm_Y';
+    const token = 'BQCBO2TyVESaDhbs1ktp9LQJ75YcPf8BWI8RRNRhPRWHpz2PMN-pyRQsU4zZaT3EQ_vGV_1oL7YNBFaa9XYysc9INp19EHkfBEwH5DXBInKzMgZ8iWUb3YxIiPe2Arcky9NYlIKpomKVCFmoUYkxaeC6nqAthEW9uCC1llNIoB3wgq_4f_zunw7qgyA';
 
     if (window.Spotify !== null && window.Spotify !== undefined) {
       if (window.Spotify.Player !== null && window.Spotify.Player !== undefined) {
@@ -266,7 +266,8 @@ class DashBoardScreen extends React.Component {
                   </ul>
                   <button onClick={()=>this.props.eventsActions.fetchSongs()} className={'refreshButton'}>Refresh Recomendations</button>
 
-                  <QRCode value={""}/>
+                  <QRCode className={'qrClass'} value={"http://b1015e90.ngrok.io/xyz/join"}/>
+                  <h2 id={'numUsers'}>Participants: 0</h2>
               </div>
           </div>
       </div>
