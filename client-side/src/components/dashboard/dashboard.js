@@ -9,16 +9,19 @@ var QRCode = require('qrcode.react');
 function SongList(props) {
   const songs = props.songs.songs;
   const listItems = songs.map((song, index) =>
-    <li key={index} onClick={()=>props.songs.eventsActions.changeCurrentSong(song)} className="list-group-item songObj">
-      <div className="row">
-         <div className = "col-md-3" >
-               <img src={song["album"]["images"][2]["url"]}></img>
-         </div>
-         <div className = "col-md-9 artistName" >
+    // debugger;
+      <li key={index} onClick={() => props.songs.eventsActions.changeCurrentSong(song)}
+          className={"list-group-item songObj " + (props.songs.current_song.uri === song.uri ? 'isPlaying' : 'isNotPlaying')}>
+        <div className="row">
+          <div className="col-md-3">
+            <img src={song["album"]["images"][2]["url"]}></img>
+          </div>
+          <div className="col-md-9 artistName">
             {song.name + ' - ' + song.artists[0].name}
-         </div>
-      </div>
-    </li>
+          </div>
+        </div>
+      </li>
+
   );
   return (
     <ul className="list-group">{listItems}</ul>
@@ -129,7 +132,7 @@ class DashBoardScreen extends React.Component {
   }
 
   componentWillMount() {
-     this.props.eventsActions.fetchSongs()
+     this.props.eventsActions.fetchSongs();
      this.props.eventsActions.getSpotifyDetails();
      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
   }
@@ -164,25 +167,6 @@ class DashBoardScreen extends React.Component {
   render() {
     return (
       <div className="container dashboard">
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-
-          <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                  <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="row">
               <div className = "col-md-4 songList" >

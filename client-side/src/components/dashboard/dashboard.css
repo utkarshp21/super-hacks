@@ -1,6 +1,8 @@
 .songList{
     background-color: #2E2E2E;
     color:white;
+    overflow-y: scroll;
+    height: 100vh;
 }
 
 .songObj{
