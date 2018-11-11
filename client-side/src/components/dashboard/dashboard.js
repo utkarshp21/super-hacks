@@ -62,11 +62,11 @@ class DashBoardScreen extends React.Component {
                 <h2>Up Next</h2>
                 <SongList songs={this.props.songs}/>
               </div>
-              <div className = "col-md-4" >
-                <div className="now_playing">
+              <div className = "col-md-5" >
+                <div className="now_playing" style={{textAlign: 'center'}}>
                   <h2>Now Playing</h2>
                   <img src={this.props.songs[0]["album"]["images"][1]["url"]}></img>
-                  <h3>{this.props.songs[0].name}</h3>
+                  <h3 style={{textAlign: 'center'}}>{this.props.songs[0].name}</h3>
                   <div className="row">
                     <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
@@ -80,7 +80,7 @@ class DashBoardScreen extends React.Component {
                   </div>
                 </div>
               </div>
-              <div className = "col-md-4" >
+              <div className = "col-md-3" >
                   <div className="dropdown">
                     <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Mood
                     <span className="caret"></span></button>
