@@ -28,8 +28,7 @@ function SongList(props) {
 class DashBoardScreen extends React.Component {
 
   checkForPlayer() {
-    debugger;
-    const token = 'BQCNtZmcPEgrmziVdPCG1vil4MIV9CYigBTnlhZbKudUDjjzemV5xqzNOBNsnQsoTwy3NwmsU6EHCx9lnDPlrzODO0gxF4oT3EeF9vrYQZm7EDIKik7APtCEBxIJT_eXmk1vH-MRzfeSaIdfgNCkNUZ_y1G1A1GAMSLf7xw2A_9nlOexnAlfo_xjgfE';
+    const token = 'BQASER73xuj6E0AOE7UxnNjvjfe9oxTE2umGFLPdk1TagSGMCWW0nxVx9eG98fPDgwkkdSMi35dipqKtVQy6LblLwvc21Vz2gbzh3ufyaerq-S0flL9cgFsQShwgCP1ujtaOOLVKOWoL60e1L3QrQNxXe3av8bMPGrHZ_dMhK_xcsk0lVFUL2MdTm_Y';
 
     if (window.Spotify !== null && window.Spotify !== undefined) {
       if (window.Spotify.Player !== null && window.Spotify.Player !== undefined) {
@@ -65,7 +64,7 @@ class DashBoardScreen extends React.Component {
 
         // Playback status updates
         player.addListener('player_state_changed', state => {
-          console.log(state);
+          // console.log(state);
         });
 
         // Ready
@@ -121,7 +120,7 @@ class DashBoardScreen extends React.Component {
         clearInterval(this.playerCheckInterval);
 
       };
-      
+
     }
   }
 
@@ -130,72 +129,72 @@ class DashBoardScreen extends React.Component {
   }
 
   componentWillMount() {
+     this.props.eventsActions.fetchSongs()
      this.props.eventsActions.getSpotifyDetails();
-     
      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
-
-    //  fetch('http://15b58e96.ngrok.io/recommendation', {
-    //      method: 'POST',
-    //      headers: {
-    //        'Accept': 'application/json',
-    //        'Content-Type': 'application/json',
-    //      },
-    //      body: JSON.stringify({
-    //        acousticness: document.getElementById("acousticness").value / 100,
-    //        danceability: document.getElementById("danceability").value / 100,
-    //        energy: document.getElementById("energy").value / 100,
-    //        liveness: document.getElementById("liveness").value / 100,
-    //        loudness: document.getElementById("loudness").value / 100,
-    //        popularity: document.getElementById("popularity").value,
-    //        tempo: document.getElementById("tempo").value / 100,
-    //        valence: document.getElementById("valence").value / 100,
-    //        group: document.getElementById("group").value / 100,
-    //      })
-    //    }).then(function (response) {
-    //      // var res = response.json();
-    //      // debugger;
-    //      return response.json();
-    //    })
-    //    .then((result) => {
-    //      console.log(result);
-    //    })
-     
   }
 
   render() {
     return (
       <div className="container dashboard">
-          <div>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
               <div className = "col-md-4 songList" >
                 <h2>Up Next</h2>
                 <SongList songs={this.props}/>
               </div>
-              <div className = "col-md-4" >
-                <div className="now_playing">
+              <div className = "col-md-5" >
+                <div className="now_playing" style={{textAlign: 'center'}}>
                   <h2>Now Playing</h2>
                   <img src={this.props.current_song["album"]["images"][1]["url"]}></img>
                   <h3>{this.props.current_song.name}</h3>
                   <div className="row">
-                    <div className="col-md-4 play_button">
+                    <div className="col-md-4 play_button" onClick={()=>window.player.previousTrack()}>
                       <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
                     </div>
                     <div className="col-md-4 play_button">
-                      <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+                      <span className="glyphicon glyphicon-play" id="playbackButton" aria-hidden="true" onClick={()=>{
+                        window.player.togglePlay();
+                        var element = document.getElementById("playbackButton");
+                        element.classList.toggle("glyphicon-play");
+                        element.classList.toggle("glyphicon-pause");
+                        }
+                      }></span>
                     </div>
                     <div className="col-md-4 play_button">
-                      <span className="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                      <span className="glyphicon glyphicon-forward" aria-hidden="true" onClick={()=>window.player.nextTrack()}></span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className = "col-md-4" >
+              <div className = "col-md-3" >
                   <div className="dropdown">
-                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Mood
+                    <button className="btn btn-primary dropdown-toggle moodbutton" type="button" data-toggle="dropdown">Select Mood
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
-                      <li><a href="#">Mood 1</a></li>
-                      <li><a href="#">Mood 2</a></li>
-                      <li><a href="#">Mood 3</a></li>
+                      <li><a href="#">Mood Booster</a></li>
+                      <li><a href="#">Good Vibes</a></li>
+                      <li><a href="#">WorkOut</a></li>
+                      <li><a href="#">Focus</a></li>
                     </ul>
                   </div>
                   <ul className="list-group slider-container">
@@ -240,6 +239,7 @@ class DashBoardScreen extends React.Component {
                     <input type="range" className="custom-range" id="group"/>
                   </div></li>
                   </ul>
+                  <button onClick={()=>this.props.eventsActions.fetchSongs()} >Refresh Recomendations</button>
 
                   {/* </div> */}
               </div>

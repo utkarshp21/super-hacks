@@ -2,20 +2,47 @@
 export const RECIEVE_ALL_EVENTS = 'RECIEVE_ALL_EVENTS';
 export const RECIEVE_ACCESS_TOKEN = 'RECIEVE_ACCESS_TOKEN';
 export const CHANGE_CURRENT_SONG = 'CHANGE_CURRENT_SONG';
+export const RECIEVE_ALL_SONGS = 'RECIEVE_ALL_SONGS';
 
 
-export function receiveEvents(events) {
+export function receiveAllSongs(songs) {
     //Action dispatched after list of event is successfully fetched
     //from the YELP API
+    debugger;
     return {
-        type: RECIEVE_ALL_EVENTS,
-        events
+        type: RECIEVE_ALL_SONGS,
+        songs
     };
 }
 
-export function fetchEvents() {
+export function fetchSongs() {
     return (dispatch, getState) => {
-        dispatch(receiveEvents({"name":"Kala chasma","Artist":"sharukh kan"}))
+         return fetch('http://15b58e96.ngrok.io/recommendation', {
+             method: 'POST',
+             headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json',
+             },
+             body: JSON.stringify({
+               acousticness: document.getElementById("acousticness")? (document.getElementById("acousticness").value/10): 0.5,
+               danceability: document.getElementById("danceability") ?(document.getElementById("danceability").value / 10) : 0.5,
+               energy: document.getElementById("energy") ?( document.getElementById("energy").value / 10): 0.5,
+               liveness: document.getElementById("liveness") ? (document.getElementById("liveness").value / 10) : 0.5,
+               loudness: document.getElementById("loudness") ? (document.getElementById("loudness").value / 10) : 0.5,
+               popularity: document.getElementById("popularity") ? document.getElementById("popularity").value : 50,
+               tempo: document.getElementById("tempo") ? (document.getElementById("tempo").value / 10) : 0.5,
+               valence: document.getElementById("valence") ? (document.getElementById("valence").value / 10) : 0.5,
+               group: document.getElementById("group") ? (document.getElementById("group").value / 10) : 0.5,
+             })
+           }).then(function (response) {
+             return response.json();
+           })
+           .then((result) => {
+             dispatch(receiveAllSongs(result.data.tracks))
+             
+        })
+       
+       
         // return fetch(yelpurl(getState().user_location), {
         //         method: 'GET',
         //         headers: {
@@ -78,10 +105,8 @@ export function changeCurrentSong(song) {
                 playerInstance: window.player,
                 spotify_uri: song.uri,
             })
-        })
-                
+        });
         dispatch(updateCurrentSong(song))
-
     }
-
 }
+
