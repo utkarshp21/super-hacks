@@ -5,6 +5,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import './dashboard.css';
 
+function SongList(props) {
+  const songs = props.songs;
+  const listItems = songs.map((song, index) =>
+    <li key={index}>
+      {song.album.album_type}
+    </li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
 class DashBoardScreen extends React.Component {
   
   componentWillMount() {  
@@ -15,12 +27,12 @@ class DashBoardScreen extends React.Component {
       <div className="container">
           <div>
               <div class = "col-md-4 songList" >
-                1 of 2
+                <SongList songs={this.props.songs}/>
               </div>
-              <div class="col-md-4">
+              <div className = "col-md-4" >
                 2 of 2
               </div>
-              <div class="col-md-4">
+              <div className = "col-md-4" >
                 2 of 2
               </div>
           </div>
@@ -35,7 +47,7 @@ DashBoardScreen.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    song: state.song,
+    songs: state.songs,
     token: state.token
   };
 }
