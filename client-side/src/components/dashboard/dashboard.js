@@ -10,11 +10,11 @@ function SongList(props) {
   const listItems = songs.map((song, index) =>
     <li key={index} className="list-group-item songObj">
       <div className="row">
-         <div className = "col-md-6" >
+         <div className = "col-md-3" >
                <img src={song["album"]["images"][2]["url"]}></img>
          </div>
-         <div className = "col-md-6" >
-            {song.name}
+         <div className = "col-md-9 artistName" >
+            {song.name + ' - ' + song.artists[0].name}
          </div>
       </div>
     </li>
@@ -45,9 +45,13 @@ class DashBoardScreen extends React.Component {
         group: document.getElementById("group").value/100,
       })
     }).then(function(response){
-      debugger;
-      console.log(response);
+      // var res = response.json();
+      // debugger;
+      return response.json();
     })
+      .then((result) => {
+        console.log(result);
+      })
   }
 
   render() {

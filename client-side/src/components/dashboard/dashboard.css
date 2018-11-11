@@ -38,6 +38,10 @@
     right: 20px;
 }
 
+.artistName {
+    font-size: 0.85em;
+}
+
 .slider-container {
     margin-left: 50px;
 }
