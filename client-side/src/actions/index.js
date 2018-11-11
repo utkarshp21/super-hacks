@@ -8,7 +8,6 @@ export const RECIEVE_ALL_SONGS = 'RECIEVE_ALL_SONGS';
 export function receiveAllSongs(songs) {
     //Action dispatched after list of event is successfully fetched
     //from the YELP API
-    debugger;
     return {
         type: RECIEVE_ALL_SONGS,
         songs
@@ -39,10 +38,10 @@ export function fetchSongs() {
            })
            .then((result) => {
              dispatch(receiveAllSongs(result.data.tracks))
-             
+
         })
-       
-       
+
+
         // return fetch(yelpurl(getState().user_location), {
         //         method: 'GET',
         //         headers: {

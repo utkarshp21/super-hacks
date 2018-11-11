@@ -19,7 +19,8 @@ class JoinGroup extends React.Component {
   }
 
   loginFunc() {
-    const state = this.props.location.pathname.split('/')[1];
+    const state = 'xyz';//this.props.location.pathname.split('/')[1];
+    const host = true;
     // res.cookie(keys.state,state);
 
     const params = qs.stringify({
@@ -27,7 +28,8 @@ class JoinGroup extends React.Component {
       client_id: keys.spotify.clientId,
       scope,
       redirect_uri: keys.spotify.redirectUri,
-      state
+      myData: 'oolala',
+      state,
     });
     window.location = 'https://accounts.spotify.com/authorize?'+params
   };

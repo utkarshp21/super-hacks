@@ -134,6 +134,31 @@ class DashBoardScreen extends React.Component {
      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
   }
 
+  updateConstraintsFor(mood) {
+    console.log('here');
+    // debugger;
+    var constraints = [0.5,0.5,0.5,0.5,0.5,50,0.5,0.5,0.5];
+    switch (mood) {
+      case 'Mood Booster':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'Good Vibes':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'WorkOut':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'Focus':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'EDM':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+      case 'Death Metal Esque':
+        constraints = [0.2, 0.3, 0.7, 0.1, 0.9, 0.3, 0.9, 0.5, 0.0];
+    }
+    var x = document.getElementsByClassName("moodRange");
+
+    for (var i = 0; i < x.length; i++) {
+      x[i].value = constraints[i]*100;
+    }
+  }
+
   render() {
     return (
       <div className="container dashboard">
@@ -191,51 +216,53 @@ class DashBoardScreen extends React.Component {
                     <button className="btn btn-primary dropdown-toggle moodbutton" type="button" data-toggle="dropdown">Select Mood
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
-                      <li><a href="#">Mood Booster</a></li>
-                      <li><a href="#">Good Vibes</a></li>
-                      <li><a href="#">WorkOut</a></li>
-                      <li><a href="#">Focus</a></li>
+                      <li onClick={()=>this.updateConstraintsFor('Mood Booster')}><a>Mood Booster</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('Good Vibes')}>Good Vibes</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('WorkOut')}>WorkOut</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('Focus')}>Focus</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('EDM')}>EDM</a></li>
+                      <li><a onClick={()=>this.updateConstraintsFor('Death Metal Esque')}>Death Metal Esque</a></li>
                     </ul>
                   </div>
                   <ul className="list-group slider-container">
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Acousticness</label>
-                    <input type="range" className="custom-range" id="acousticness"/>
+                    <input type="range" className="custom-range moodRange" id="acousticness"/>
                   </div></li>
                     < li className = "list-group-item rangeObj" > < div >
                     <label for="customRange1">Danceability</label>
-                    <input type="range" className="custom-range" id="danceability"/>
+                    <input type="range" className="custom-range moodRange" id="danceability"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Energy</label>
-                    <input type="range" className="custom-range" id="energy"/>
+                    <input type="range" className="custom-range moodRange" id="energy"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Liveness</label>
-                    <input type="range" className="custom-range" id="liveness"/>
+                    <input type="range" className="custom-range moodRange" id="liveness"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Loudness</label>
-                    <input type="range" className="custom-range" id="loudness"/>
+                    <input type="range" className="custom-range moodRange" id="loudness"/>
                   </div></li>
                   <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Popularity</label>
-                    <input type="range" className="custom-range" id="popularity"/>
+                    <input type="range" className="custom-range moodRange" id="popularity"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Tempo</label>
-                    <input type="range" className="custom-range" id="tempo"/>
+                    <input type="range" className="custom-range moodRange" id="tempo"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Valence</label>
-                    <input type="range" className="custom-range" id="valence"/>
+                    <input type="range" className="custom-range moodRange" id="valence"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Group</label>
-                    <input type="range" className="custom-range" id="group"/>
+                    <input type="range" className="custom-range moodRange" id="group"/>
                   </div></li>
                   </ul>
-                  <button onClick={()=>this.props.eventsActions.fetchSongs()} >Refresh Recomendations</button>
+                  <button onClick={()=>this.props.eventsActions.fetchSongs()} className={'refreshButton'}>Refresh Recomendations</button>
 
                   {/* </div> */}
               </div>
