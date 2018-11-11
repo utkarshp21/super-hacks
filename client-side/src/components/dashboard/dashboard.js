@@ -43,13 +43,13 @@ class DashBoardScreen extends React.Component {
                   <img src={this.props.songs[0]["album"]["images"][1]["url"]}></img>
                   <h3>{this.props.songs[0].name}</h3>
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
                     </div> 
-                    <div className="col-md-4">
+                    <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
                     </div> 
-                    <div className="col-md-4">
+                    <div className="col-md-4 play_button">
                       <span className="glyphicon glyphicon-forward" aria-hidden="true"></span>
                     </div>  
                   </div>
@@ -70,11 +70,11 @@ class DashBoardScreen extends React.Component {
                     <label for="customRange1">Example range</label>
                     <input type="range" className="custom-range" id="customRange1"/>
                   </div></li>
-                    < li class = "list-group-item rangeObj" > < div >
+                    < li className = "list-group-item rangeObj" > < div >
                     <label for="customRange1">Example range</label>
                     <input type="range" className="custom-range" id="customRange1"/>
                   </div></li>
-                    <li class="list-group-item rangeObj"> <div>
+                    <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Example range</label>
                     <input type="range" className="custom-range" id="customRange1"/>
                   </div></li>
