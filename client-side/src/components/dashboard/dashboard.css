@@ -1,0 +1,38 @@
+.songList{
+    background-color: #2E2E2E;
+    color:white;
+}
+
+.songObj{
+    background-color:#2E2E2E !important;
+    color:white;
+    border: 0px !important
+}
+
+.now_playing {
+    margin: 0 auto;
+    max-width: 80%;
+    /* text-align: center; */
+   
+}
+
+ .play_button {
+     text-align: center;
+ }
+
+.dashboard{
+    background-color: #404040 !important;
+    color:white !important;
+}
+
+.rangeObj{
+     background-color:#2E2E2E !important;
+    color:white;
+    border: 0px !important
+}
+
+
+.vsc-initialized{
+    background-color: #404040
+}
+
