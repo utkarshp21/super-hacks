@@ -64,11 +64,24 @@ export function getSpotifyDetails() {
 
 }
 
-export function changeCurrentSong(song){
+export function updateCurrentSong(song) {
     return {
         type: CHANGE_CURRENT_SONG,
         song
     };
 }
 
+export function changeCurrentSong(song) {
+    return (dispatch, getState) => {
+        window.player.pause().then(()=>{
+            window.play({
+                playerInstance: window.player,
+                spotify_uri: song.uri,
+            })
+        })
+                
+        dispatch(updateCurrentSong(song))
 
+    }
+
+}

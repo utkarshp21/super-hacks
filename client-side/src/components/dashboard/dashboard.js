@@ -7,16 +7,15 @@ import './dashboard.css';
 
 
 function SongList(props) {
-  debugger;
   const songs = props.songs.songs;
   const listItems = songs.map((song, index) =>
     <li key={index} onClick={()=>props.songs.eventsActions.changeCurrentSong(song)} className="list-group-item songObj">
       <div className="row">
-         <div className = "col-md-6" >
+         <div className = "col-md-3" >
                <img src={song["album"]["images"][2]["url"]}></img>
          </div>
-         <div className = "col-md-6" >
-            {song.name}
+         <div className = "col-md-9 artistName" >
+            {song.name + ' - ' + song.artists[0].name}
          </div>
       </div>
     </li>
@@ -30,17 +29,18 @@ class DashBoardScreen extends React.Component {
 
   checkForPlayer() {
     debugger;
-    const token = 'BQBU9lSRF1O6TzFIm6Ks6rw04EhGDlkQ_vxf30Sx64iFvokuytmQ0p8wERLvvat1l2ev2IXjnj7IATV6CdrcvNyVHcaqCGLEjgV9EyOOjXhs5dMwm3pFl7n_j3H7hmb9Sjfo4sTo3K0i6xhCF6NbFaZ54OfDrsclLWnbSMX_6AFnsQu7hD-ElOZAisg';
+    const token = 'BQCNtZmcPEgrmziVdPCG1vil4MIV9CYigBTnlhZbKudUDjjzemV5xqzNOBNsnQsoTwy3NwmsU6EHCx9lnDPlrzODO0gxF4oT3EeF9vrYQZm7EDIKik7APtCEBxIJT_eXmk1vH-MRzfeSaIdfgNCkNUZ_y1G1A1GAMSLf7xw2A_9nlOexnAlfo_xjgfE';
 
     if (window.Spotify !== null && window.Spotify !== undefined) {
       if (window.Spotify.Player !== null && window.Spotify.Player !== undefined) {
         const player = new window.Spotify.Player({
-          name: 'Tatti',
+          name: 'Host Player',
           getOAuthToken: cb => {
             cb(token);
           }
         });;
 
+        window.player = player;
         // Error handling
         player.addListener('initialization_error', ({
           message
@@ -101,12 +101,13 @@ class DashBoardScreen extends React.Component {
             });
           };
 
-          
           play({
             playerInstance: player,
             spotify_uri: this.props.current_song.uri,
           });
+          window.play = play;
         });
+
 
         // Not Ready
         player.addListener('not_ready', ({
@@ -117,18 +118,47 @@ class DashBoardScreen extends React.Component {
 
         // Connect to the player!
         player.connect();
+        clearInterval(this.playerCheckInterval);
+
       };
-      clearInterval(this.playerCheckInterval);
+      
     }
   }
 
   componentDidUpdate() {
+
   }
 
-  componentDidMount() {
+  componentWillMount() {
      this.props.eventsActions.getSpotifyDetails();
      
      this.playerCheckInterval = setInterval(() => this.checkForPlayer(), 1000);
+
+    //  fetch('http://15b58e96.ngrok.io/recommendation', {
+    //      method: 'POST',
+    //      headers: {
+    //        'Accept': 'application/json',
+    //        'Content-Type': 'application/json',
+    //      },
+    //      body: JSON.stringify({
+    //        acousticness: document.getElementById("acousticness").value / 100,
+    //        danceability: document.getElementById("danceability").value / 100,
+    //        energy: document.getElementById("energy").value / 100,
+    //        liveness: document.getElementById("liveness").value / 100,
+    //        loudness: document.getElementById("loudness").value / 100,
+    //        popularity: document.getElementById("popularity").value,
+    //        tempo: document.getElementById("tempo").value / 100,
+    //        valence: document.getElementById("valence").value / 100,
+    //        group: document.getElementById("group").value / 100,
+    //      })
+    //    }).then(function (response) {
+    //      // var res = response.json();
+    //      // debugger;
+    //      return response.json();
+    //    })
+    //    .then((result) => {
+    //      console.log(result);
+    //    })
      
   }
 
@@ -168,42 +198,42 @@ class DashBoardScreen extends React.Component {
                       <li><a href="#">Mood 3</a></li>
                     </ul>
                   </div>
-                  <ul className="list-group">
+                  <ul className="list-group slider-container">
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Acousticness</label>
-                    <input type="range" className="custom-range" id="Acousticness"/>
+                    <input type="range" className="custom-range" id="acousticness"/>
                   </div></li>
                     < li className = "list-group-item rangeObj" > < div >
                     <label for="customRange1">Danceability</label>
-                    <input type="range" className="custom-range" id="Danceability"/>
+                    <input type="range" className="custom-range" id="danceability"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Energy</label>
-                    <input type="range" className="custom-range" id="Energy"/>
+                    <input type="range" className="custom-range" id="energy"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Liveness</label>
-                    <input type="range" className="custom-range" id="Liveness"/>
+                    <input type="range" className="custom-range" id="liveness"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Loudness</label>
-                    <input type="range" className="custom-range" id="Loudness"/>
+                    <input type="range" className="custom-range" id="loudness"/>
                   </div></li>
                   <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Popularity</label>
-                    <input type="range" className="custom-range" id="Popularity"/>
+                    <input type="range" className="custom-range" id="popularity"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Tempo</label>
-                    <input type="range" className="custom-range" id="Tempo"/>
+                    <input type="range" className="custom-range" id="tempo"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Valence</label>
-                    <input type="range" className="custom-range" id="Valence"/>
+                    <input type="range" className="custom-range" id="valence"/>
                   </div></li>
                     <li className="list-group-item rangeObj"> <div>
                     <label for="customRange1">Group</label>
-                    <input type="range" className="custom-range" id="Group"/>
+                    <input type="range" className="custom-range" id="group"/>
                   </div></li>
                   </ul>
 

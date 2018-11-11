@@ -27,7 +27,6 @@ const reducer = (state = initialState, action) => {
       newState = Object.assign({}, state, {
         current_song: action.song
       })
-      debugger;
       return newState;
       
     default:
