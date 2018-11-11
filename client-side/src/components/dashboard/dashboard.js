@@ -137,7 +137,27 @@ class DashBoardScreen extends React.Component {
   render() {
     return (
       <div className="container dashboard">
-          <div>
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
               <div className = "col-md-4 songList" >
                 <h2>Up Next</h2>
                 <SongList songs={this.props}/>
@@ -171,9 +191,10 @@ class DashBoardScreen extends React.Component {
                     <button className="btn btn-primary dropdown-toggle moodbutton" type="button" data-toggle="dropdown">Select Mood
                     <span className="caret"></span></button>
                     <ul className="dropdown-menu">
-                      <li><a href="#">Mood 1</a></li>
-                      <li><a href="#">Mood 2</a></li>
-                      <li><a href="#">Mood 3</a></li>
+                      <li><a href="#">Mood Booster</a></li>
+                      <li><a href="#">Good Vibes</a></li>
+                      <li><a href="#">WorkOut</a></li>
+                      <li><a href="#">Focus</a></li>
                     </ul>
                   </div>
                   <ul className="list-group slider-container">
@@ -214,6 +235,7 @@ class DashBoardScreen extends React.Component {
                     <input type="range" className="custom-range" id="group"/>
                   </div></li>
                   </ul>
+                  <button onClick={()=>this.props.eventsActions.fetchSongs()} >Refresh Recomendations</button>
 
                   {/* </div> */}
               </div>

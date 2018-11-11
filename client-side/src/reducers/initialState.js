@@ -19047,7 +19047,7 @@ export default {
         "preview_url": "https://p.scdn.co/mp3-preview/416309ca7cadf9255e07cfc054071ed9fade56d9?cid=null",
         "track_number": 10,
         "type": "track",
-        "uri": "spotify:track:2wVCje7MBTBYqnNgvUGgZA"
+        "uri": ""
     }
     // events: [],
     // events_count : 0,
