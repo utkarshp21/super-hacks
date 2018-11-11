@@ -8,12 +8,19 @@ import './dashboard.css';
 function SongList(props) {
   const songs = props.songs;
   const listItems = songs.map((song, index) =>
-    <li key={index}>
-      {song.album.album_type}
+    <li key={index} className="list-group-item songObj">
+      <div className="row">
+         <div className = "col-md-6" >
+               <img src={song["album"]["images"][2]["url"]}></img>
+         </div>
+         <div className = "col-md-6" >
+            {song.name}
+         </div>
+      </div>
     </li>
   );
   return (
-    <ul>{listItems}</ul>
+    <ul className="list-group">{listItems}</ul>
   );
 }
 
@@ -24,16 +31,80 @@ class DashBoardScreen extends React.Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container dashboard">
           <div>
-              <div class = "col-md-4 songList" >
+              <div className = "col-md-4 songList" >
+                <h2>Up Next</h2>
                 <SongList songs={this.props.songs}/>
               </div>
               <div className = "col-md-4" >
-                2 of 2
+                <div className="now_playing">
+                  <h2>Now Playing</h2>
+                  <img src={this.props.songs[0]["album"]["images"][1]["url"]}></img>
+                  <h3>{this.props.songs[0].name}</h3>
+                  <div className="row">
+                    <div className="col-md-4">
+                      <span className="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                    </div> 
+                    <div className="col-md-4">
+                      <span className="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </div> 
+                    <div className="col-md-4">
+                      <span className="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                    </div>  
+                  </div>
+                </div>
               </div>
               <div className = "col-md-4" >
-                2 of 2
+                  <div className="dropdown">
+                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Mood
+                    <span className="caret"></span></button>
+                    <ul className="dropdown-menu">
+                      <li><a href="#">Mood 1</a></li>
+                      <li><a href="#">Mood 2</a></li>
+                      <li><a href="#">Mood 3</a></li>
+                    </ul>
+                  </div>
+                  <ul className="list-group">
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    < li class = "list-group-item rangeObj" > < div >
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li class="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                  <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                    <li className="list-group-item rangeObj"> <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" className="custom-range" id="customRange1"/>
+                  </div></li>
+                  </ul>
+                  
+                  {/* </div> */}
               </div>
           </div>
       </div>
