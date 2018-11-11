@@ -1,5 +1,9 @@
 export default {
     song:null,
+    token: {
+        access_token: null,
+        refresh_token: null
+    }
     // events: [],
     // events_count : 0,
     // user_location : {
