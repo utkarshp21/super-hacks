@@ -401,7 +401,7 @@ export default {
         "type": "track",
         "uri": "spotify:track:2tznHmp70DxMyr2XhWLOW0"
     }],
-    
+
     current_song: {
         "album": {
             "album_type": "ALBUM",
@@ -433,7 +433,7 @@ export default {
                 "url": "https://i.scdn.co/image/6886ac810f0a747cf05d77ecd70a11324f72550d",
                 "width": 64
             }],
-            "name": "Melophobia",
+            "name": "Melophobia 123",
             "release_date": "2013-10-08",
             "release_date_precision": "day",
             "type": "album",
@@ -462,12 +462,12 @@ export default {
         "id": "2tznHmp70DxMyr2XhWLOW0",
         "is_local": false,
         "is_playable": true,
-        "name": "Cigarette Daydreams",
+        "name": "Cigarette Daydreams 123",
         "popularity": 70,
         "preview_url": "https://p.scdn.co/mp3-preview/416309ca7cadf9255e07cfc054071ed9fade56d9?cid=null",
         "track_number": 10,
         "type": "track",
-        "uri": "spotify:track:2tznHmp70DxMyr2XhWLOW0"
+        "uri": "spotify:track:2wVCje7MBTBYqnNgvUGgZA"
     }
     // events: [],
     // events_count : 0,

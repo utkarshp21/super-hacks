@@ -1,6 +1,7 @@
 
 export const RECIEVE_ALL_EVENTS = 'RECIEVE_ALL_EVENTS';
 export const RECIEVE_ACCESS_TOKEN = 'RECIEVE_ACCESS_TOKEN';
+export const CHANGE_CURRENT_SONG = 'CHANGE_CURRENT_SONG';
 
 
 export function receiveEvents(events) {
@@ -62,4 +63,12 @@ export function getSpotifyDetails() {
     }
 
 }
+
+export function changeCurrentSong(song){
+    return {
+        type: CHANGE_CURRENT_SONG,
+        song
+    };
+}
+
 
