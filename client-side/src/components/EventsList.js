@@ -13,12 +13,13 @@ class eventsList extends React.Component {
   }
 
   checkForPlayer() {
-      const token = 'BQAZ3uR1jNg9dijMt236wEwT9n35FyKTMJgWLlQ5QoXGwXwGmA5BD6WbPJgw9aHiC001vW8bhnqOTzGtsQxCePvCJ0c8erFdq-nhSQsa7gMAxAUZD3yQ1O892vzpkPJsdeS3UYtcjnV-WdR7cWhXqk1I6-58HjHOoBw46gsBCSth-pfVQ4uduwjL_5o';
+      const token = 'BQCRr4_TbM2vQM1b2KA2KyIAdE-K6nu32a6bmvVfy3roGUERXY8ZqTbbsHs65RK3iN0UFN127srYOIoX-yVbwnHIJLJhGZsKE22qCTm6yB57W2LsESFcpTle3UmX4W_Uu-_y-_5jzhkkUU_xEWDj3pwdQ_4j74XEQvN_4kvuRcYsmJBXIQnD4TgJQZ8';
      
       if (window.Spotify !== null && window.Spotify !== undefined) {
         if (window.Spotify.Player !== null && window.Spotify.Player !== undefined) {
+          
           const player = new window.Spotify.Player({
-             name: 'Web Playback SDK Quick Start Player',
+             name: 'Tatti',
              getOAuthToken: cb => {
                cb(token);
              }
@@ -100,7 +101,6 @@ class eventsList extends React.Component {
 
            // Connect to the player!
            player.connect();
-           debugger;
           };
           clearInterval(this.playerCheckInterval);
         }

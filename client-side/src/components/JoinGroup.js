@@ -36,9 +36,6 @@ class JoinGroup extends React.Component {
     return (
       <div className="">
         {this.renderData()}
-        {/* {
-            this.props.songs.length > 0 ? this.renderData() : <div className = "loader"> </div>
-          } */}
       </div>
     );
   }
