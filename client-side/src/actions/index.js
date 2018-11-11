@@ -1,6 +1,7 @@
 
 export const RECIEVE_ALL_EVENTS = 'RECIEVE_ALL_EVENTS';
 export const RECIEVE_ACCESS_TOKEN = 'RECIEVE_ACCESS_TOKEN';
+export const CHANGE_CURRENT_SONG = 'CHANGE_CURRENT_SONG';
 
 
 export function receiveEvents(events) {
@@ -61,5 +62,24 @@ export function getSpotifyDetails() {
     // };
     }
 
+}
+
+export function updateCurrentSong(song) {
+    return {
+        type: CHANGE_CURRENT_SONG,
+        song
+    };
+}
+
+export function changeCurrentSong(song) {
+    return (dispatch, getState) => {
+        window.player.pause().then(()=>{
+            window.play({
+                playerInstance: window.player,
+                spotify_uri: song.uri,
+            })
+        });
+        dispatch(updateCurrentSong(song))
+    }
 }
 

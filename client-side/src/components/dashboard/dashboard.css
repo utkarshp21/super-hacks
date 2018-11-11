@@ -52,3 +52,9 @@
     background-color: #404040
 }
 
+.moodbutton {
+    background-color: #FF6753!important;
+    border-radius: 20px!important;
+    border-color: #FF6753!important;
+    width: 100%;
+}

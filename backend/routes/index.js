@@ -266,10 +266,10 @@ router.post('/recommendation',async (req,res) => {
 		json:true
 	})
 	.then((data) => {
-		res.json(data);
+		res.json({data});
 	})
 	.catch((err) => {
-		console.log('Recommendation error: ', err);
+		console.log('Recommendation error: ', err.toJSON());
 	})
 });
 
